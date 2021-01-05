@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="window">
+      <div class="timer">
+        <div class="set">
+          <div class="input">
+            <label
+              >Minutes:<br /><input
+                type="number"
+                class="minutes"
+                min="0"
+                max="59"
+                value="10"
+            /></label>
+          </div>
+          <div class="input">
+            <label
+              >Seconds:<br /><input
+                type="number"
+                min="0"
+                max="59"
+                class="seconds"
+                value="00"
+            /></label>
+          </div>
+        </div>
+        <div class="time">
+          <span class="min" value="10">10</span><span>:</span
+          ><span class="sec">00</span>
+        </div>
+        <div class="buttons">
+          <button class="start">
+            Start <br />
+            Countdown
+          </button>
+          <button class="pause">
+            Pause <br />
+            Countdown
+          </button>
+          <button class="stop">
+            Stop <br />
+            Countdown
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
