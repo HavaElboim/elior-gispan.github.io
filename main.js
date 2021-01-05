@@ -17,8 +17,8 @@ function setTimer() {
   sec.innerText = ("0" + secondsInput.value).slice(-2);
 }
 
-minutesInput.oninput = setTimer;
-secondsInput.oninput = setTimer;
+minutesInput.onchange = setTimer;
+secondsInput.onchange = setTimer;
 
 var spinnerHtml =
   "<div class='lds-spinner'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>";
