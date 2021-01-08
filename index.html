@@ -10,7 +10,7 @@
     <div class="window">
       <div class="timer">
         <div class="set">
-          <div class="input">
+          <div id="input">
             <label
               >Minutes:<br /><input
                 type="number"
@@ -31,9 +31,15 @@
             /></label>
           </div>
         </div>
+        <div class="spinnercontainer">
+          <div class='lds-spinner'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
         <div class="time">
           <span class="min" value="10">10</span><span>:</span
           ><span class="sec">00</span>
+        </div>
+        <div class="imgcontainer">
+          <img id="catimg"></img>
         </div>
         <div class="buttons">
           <button class="start">

@@ -6,6 +6,9 @@ var pauseButton = document.querySelector(".pause");
 var minutesInput = document.querySelector(".minutes");
 var secondsInput = document.querySelector(".seconds");
 var timeDiv = document.querySelector(".time");
+var spinnerDiv = document.querySelector(".lds-spinner");
+var imgDiv = document.querySelector("#catimg");
+imgDiv.style.display = "none";
 var intervalID;
 var gameOver = false;
 
@@ -27,13 +30,17 @@ stopButton.addEventListener("click", stopTimer);
 pauseButton.addEventListener("click", pauseTimer);
 
 function showCat() {
+  timeDiv.style.display = "none";
   fetch("https://aws.random.cat/meow")
     .then(function (res) {
-      timeDiv.innerHTML = spinnerHtml;
+      /*timeDiv.innerHTML = spinnerHtml;*/
       return res.json();
     })
     .then(function (json) {
-      timeDiv.innerHTML = `<img src="${json.file}" width="100em" height="100em">`;
+      /*timeDiv.innerHTML = `<img src="${json.file}" width="100em" height="100em">`;*/
+      timeDiv.style.display = "none";
+      imgDiv.style.display = "flex";
+      imgDiv.src = json.file;
       console.log("cat", timeDiv);
     });
 }
@@ -65,6 +72,10 @@ function pauseTimer() {
 }
 
 function startTimer() {
+  imgDiv.src = "";
+  timeDiv.style.display = "flex";
+  imgDiv.style.display = "none";
+  console.log("img at:", imgDiv.style.display);
   startButton.disabled = true;
   startButton.style.backgroundColor = "#cccccc";
   minutesInput.disabled = true;
@@ -80,9 +91,14 @@ function startTimer() {
         seconds = 59;
         min.innerText = ("0" + minutes).slice(-2);
       } else {
+        spinnerDiv.style.display = "flex";
         showCat();
         stopTimer();
         sayMeow();
+        // let the spinner run for a bit before hiding it again:
+        setTimeout(function () {
+          spinnerDiv.style.display = "none";
+        }, 3000);
         gameOver = true;
       }
     }
