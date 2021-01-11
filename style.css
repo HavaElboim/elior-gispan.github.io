@@ -33,6 +33,12 @@
   justify-content: center;
 }
 
+.cat {
+    font-size: 75px;
+    display: none;
+    justify-content: center;
+}
+
 button {
   border-radius: 7px;
   outline: none;
@@ -53,6 +59,7 @@ button {
 }
 
 .stop {
+
   background-color: red;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
@@ -91,15 +98,15 @@ img {
 }
 
 .lds-spinner div:after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 3px;
-  left: 37px;
-  width: 6px;
-  height: 18px;
-  border-radius: 20%;
-  background: #00ffcc; /*it was set before to white, which is invisible on a white background */
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 37px;
+    width: 6px;
+    height: 18px;
+    border-radius: 20%;
+    background: #00ffcc;
 }
 
 .lds-spinner div:nth-child(1) {
