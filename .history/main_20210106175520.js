@@ -9,20 +9,12 @@ var timeDiv = document.querySelector(".time");
 var intervalID;
 var gameOver = false;
 
-function initialTimer(min, sec) {
-  minutesInput.value = min;
-  secondsInput.value = sec;
-  setTimer();
-}
+// var timeDivInitial = timeDiv.innerHTML;
 
 function setTimer() {
-  min.innerText =
-    minutesInput.value >= 0 ? ("0" + minutesInput.value).slice(-2) : "00";
-  sec.innerText =
-    secondsInput.value >= 0 ? ("0" + secondsInput.value).slice(-2) : "00";
+  min.innerText = ("0" + minutesInput.value).slice(-2);
+  sec.innerText = ("0" + secondsInput.value).slice(-2);
 }
-
-initialTimer(0, 3);
 
 minutesInput.onchange = setTimer;
 secondsInput.onchange = setTimer;
@@ -37,13 +29,13 @@ pauseButton.addEventListener("click", pauseTimer);
 async function showCat() {
   var res = await fetch("https://aws.random.cat/meow");
   timeDiv.innerHTML = spinnerHtml;
-  var json = await res.json();
+  var json = res.json;
   timeDiv.innerHTML = `<img src="${json.file}" width="100em" height="100em">`;
 }
 
 function sayMeow() {
   var meow = new Audio();
-  meow.src = "/elior-gispan.github.io\\meow.mp3";
+  meow.src = "/meow.mp3";
   meow.play();
 }
 
