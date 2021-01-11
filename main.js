@@ -6,6 +6,7 @@ var pauseButton = document.querySelector(".pause");
 var minutesInput = document.querySelector(".minutes");
 var secondsInput = document.querySelector(".seconds");
 var timeDiv = document.querySelector(".time");
+var catDiv = document.querySelector("#cat");
 var intervalID;
 var gameOver = false;
 
@@ -29,12 +30,20 @@ pauseButton.addEventListener("click", pauseTimer);
 function showCat() {
   fetch("https://aws.random.cat/meow")
     .then(function (res) {
-      timeDiv.innerHTML = spinnerHtml;
+      timeDiv.style.display = "none";
+      catDiv.style.display = "flex";
+
+      catDiv.innerHTML = spinnerHtml;
       return res.json();
     })
     .then(function (json) {
-      timeDiv.innerHTML = `<img src="${json.file}" width="100em" height="100em">`;
-      console.log("cat", timeDiv);
+      catDiv.innerHTML = `<img src="${json.file}" width="100em" height="100em">`;
+      // console.log("cat", catDiv);
+      setTimeout(function () {
+        catDiv.innerHTML = "";
+        catDiv.style.display = "none";
+        timeDiv.style.display = "flex";
+      }, 5000);
     });
 }
 
@@ -46,14 +55,14 @@ function sayMeow() {
 
 function stopTimer() {
   clearInterval(intervalID);
-  if (gameOver) {
-    // TODO hiding the image of the cat;
-  }
+  // if (gameOver) {
+  //   // TODO hiding the image of the cat;
+  // }
+  minutesInput.disabled = false;
+  secondsInput.disabled = false;
   setTimer();
   startButton.disabled = false;
   startButton.style.backgroundColor = "rgb(68, 199, 68)";
-  minutesInput.disabled = false;
-  secondsInput.disabled = false;
 }
 
 function pauseTimer() {
@@ -80,9 +89,9 @@ function startTimer() {
         seconds = 59;
         min.innerText = ("0" + minutes).slice(-2);
       } else {
-        showCat();
         stopTimer();
         sayMeow();
+        showCat();
         gameOver = true;
       }
     }
