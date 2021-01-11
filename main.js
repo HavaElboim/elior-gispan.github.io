@@ -12,8 +12,8 @@ var gameOver = false;
 // var timeDivInitial = timeDiv.innerHTML;
 
 function setTimer() {
-  min.innerText = ("0" + minutesInput.value).slice(-2);
-  sec.innerText = ("0" + secondsInput.value).slice(-2);
+  min.innerText = ("00" + minutesInput.value).slice(-2);
+  sec.innerText = ("00" + secondsInput.value).slice(-2);
 }
 
 minutesInput.onchange = setTimer;
